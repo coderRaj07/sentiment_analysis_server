@@ -1,0 +1,15 @@
+# Dependency directories
+/node_modules
+
+# Environment variables file
+.env
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Other generated files
+.DS_Store
