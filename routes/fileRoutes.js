@@ -5,5 +5,6 @@ const auth = require('../middlewares/auth');
 
 router.post('/upload', auth, fileController.uploadFile);
 router.get('/:id', auth, fileController.getFile);
+router.get('/', auth, fileController.getFiles);
 
 module.exports = router;

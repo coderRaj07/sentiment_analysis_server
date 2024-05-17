@@ -49,3 +49,12 @@ exports.getFile = async (req, res) => {
     res.status(500).json({ message: 'Error retrieving file', error });
   }
 };
+
+exports.getFiles = async (req, res) => {
+  try {
+    const files = await File.find({ user: req.user._id });
+    res.json(files);
+  } catch (error) {
+    res.status(500).json({ message: 'Error retrieving files', error });
+  }
+}
