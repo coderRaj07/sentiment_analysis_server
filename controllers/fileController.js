@@ -52,7 +52,7 @@ exports.getFile = async (req, res) => {
 
 exports.getFiles = async (req, res) => {
   try {
-    const files = await File.find({ user: req.user._id }).sort({ createdAt: -1 });
+    const files = await File.find({ user: req.user._id }).sort({ createdAt: -1 }).select('-data -__v');
     res.json(files);
   } catch (error) {
     res.status(500).json({ message: 'Error retrieving files', error });
@@ -62,7 +62,7 @@ exports.getFiles = async (req, res) => {
 exports.deleteFile = async (req, res) => {
   try {
     const file = await File.findOneAndDelete(req.params.id);
-    
+
     if (file.user.toString() !== req.user._id.toString()) {
       return res.status(403).json({ message: 'Unauthorized access' });
     }
